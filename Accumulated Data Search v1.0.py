@@ -2,9 +2,7 @@
 # This program searches a directory and opens all excel files found in
 # it, searching for work order number and or letter returning all rows with
 # query found and saving it to an cvs file.
-import xlrd
-import os
-import csv
+import xlrd, os, csv
 
 
 # Look for query in each sheet and print rows containing query
@@ -34,7 +32,7 @@ def get_file_contents(workorder, letter, new_file_name):
 
     for roots, dirs, files in os.walk(file_location):
         for file in files:
-            file_name = roots + '\\' + file
+            file_name = os.path.join(roots, file)
             print(file_name)
             if '.xlsx' in file_name:
                 try:
